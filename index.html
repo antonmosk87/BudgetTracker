@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body ng-controller="TrackerController as trckCtrl">
+
+    <input type="text" ng-model="trckCtrl.newIncome.text" placeholder="Income Entry" />
+    <input type="number" ng-model="trckCtrl.newIncome.amount" placeholder="Income Amount" />
+    <input type="text" ng-model= "trckCtrl.newExpense.text" placeholder="Expense Entry" />
+    <input type="number" ng-model="trckCtrl.newExpense.amount" placeholder="Expense Amount" />
+    <button type="submit" ng-click="trckCtrl.income()">+Add Income</button>
+    <button type="submit" ng-click="trckCtrl.expense()">+Add Expense</button>
+
+    <ul style="list-style: none">
+        <li style="margin: 0;"  ng-repeat="x in trckCtrl.incomeEntries">{{x.text}}</li>
+        <li style="margin: 0;"  ng-repeat="x in trckCtrl.incomeEntries">{{x.amount}}</li>
+    </ul>
+
+    <ul style="list-style: none">
+        <li style="margin: 0;" ng-repeat="y in trckCtrl.expenseEntries">{{y.text}}</li>
+        <li style="margin: 0;"  ng-repeat="y in trckCtrl.expenseEntries">{{y.amount}}</li>
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app/app.module.js"></script>
+    <script type="text/javascript" src="app/tracker.controller.js"></script>
+</body>
+
+</html>
