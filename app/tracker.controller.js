@@ -20,14 +20,18 @@
 
 
             vm.addIncome = function() {
-                vm.incomeEntries.push(vm.newIncome)
+                vm.newIncome.amount = Math.round(vm.newIncome.amount*100)/100;
                 vm.incomeTotal += vm.newIncome.amount;
+                vm.incomeEntries.push(vm.newIncome)
+                vm.incomeTotal = Math.round(vm.incomeTotal*100)/100;
                 vm.newIncome = '';
             }
 
             vm.addExpense = function() {
-                vm.expenseEntries.push(vm.newExpense)
+                vm.newExpense.amount = Math.round(vm.newExpense.amount*100)/100;
                 vm.expenseTotal += vm.newExpense.amount;
+                vm.expenseEntries.push(vm.newExpense)
+                vm.expenseTotal = Math.round(vm.expenseTotal*100)/100;
                 vm.newExpense = '';
             }
 
