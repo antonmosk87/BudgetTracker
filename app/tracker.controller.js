@@ -1,71 +1,40 @@
 (function() {
-    'use strict';
+        'use strict';
 
-    angular
-        .module('app')
-        .controller('TrackerController', TrackerController);
+        angular
+            .module('app')
+            .controller('TrackerController', TrackerController);
 
-    TrackerController.$inject = [];
+        TrackerController.$inject = [];
 
-    /* @ngInject */
-    function TrackerController() {
-        var vm = this;
+        /* @ngInject */
+        function TrackerController() {
+            var vm = this;
 
-        vm.incomeEntriesText = [];
-        vm.incomeEntriesAmount = [];
-        vm.expenseEntriesText = [];
-        vm.expenseEntriesAmount = [];
+            vm.incomeTotal = 0;
+            vm.expenseTotal = 0;
 
-        vm.income = function() {
+            vm.incomeEntries = [];
+            vm.expenseEntries = [];
 
-            vm.addIncomeText = function() {
-                vm.incomeEntriesText.push(vm.newIncomeText)
-                vm.newIncomeText = '';
+
+
+            vm.addIncome = function() {
+                vm.incomeEntries.push(vm.newIncome)
+                vm.incomeTotal += vm.newIncome.amount;
+                vm.newIncome = '';
             }
 
-            vm.addIncomeAmount = function() {
-                vm.incomeEntriesAmount.push(vm.newIncomeAmount)
-                vm.newIncomeAmount = '';
+            vm.addExpense = function() {
+                vm.expenseEntries.push(vm.newExpense)
+                vm.expenseTotal += vm.newExpense.amount;
+                vm.newExpense = '';
             }
 
-            vm.incomeTotal = function() {
-                var tNumber = 0;
-                for (i = 0; i < vm.incomeEntriesAmount.length; i++){
-                  tNumber += vm.incomeEntriesAmount[i];
-                }
-                return tNumber;
-            }
 
 
         }
 
-        vm.expense = function() {
-
-            vm.addExpenseText = function() {
-                vm.expenseEntriesText.push(vm.newExpenseText)
-                vm.newExpenseText = '';
-            }
-
-            vm.addExpenseAmount = function() {
-                vm.expenseEntriesAmount.push(vm.newExpenseAmount)
-                vm.newExpenseAmount = '';
-            }
-
-        }
-
-        vm.expenseTotal = function() {
-            var toNumber = 0;
-            for (i = 0; i < vm.expenseEntriesAmount.length; i++){
-              toNumber += vm.expenseEntriesAmount[i];
-            }
-            return toNumber;
-        }
 
 
-
-
-
-
-
-    }
 })();
